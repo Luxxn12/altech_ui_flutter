@@ -1,6 +1,6 @@
 # altech_ui_flutter
 
-![ALTECH Logo](assets/images/logo-altech.png)
+![ALTECH Logo](https://raw.githubusercontent.com/Luxxn12/altech_ui_flutter/main/assets/images/logo-altech.png)
 
 `altech_ui_flutter` is a modern Flutter UI component library to help developers ship elegant screens faster with reusable, customizable, and developer-friendly components.
 
@@ -270,35 +270,6 @@ lib/
       └── extensions/
 ```
 
-## Example
-
-Run package example:
-
-```bash
-cd example
-flutter run
-```
-
-## Publish Checklist (pub.dev)
-
-1. Update package metadata in `pubspec.yaml` (`homepage`, `repository`, `issue_tracker`).
-2. Update `CHANGELOG.md` for every release.
-3. Run:
-
-```bash
-flutter pub get
-flutter analyze
-flutter test
-flutter pub publish --dry-run
-```
-
-4. Tag release (`vX.Y.Z`) and push tag.
-5. Ensure pub.dev automated publishing is enabled for your repository.
-
-## GitHub Actions
-
-- `ci.yml`: Analyze + test on push/PR.
-- `publish.yml`: Publish on semver tag (`v*.*.*`) when `PUB_CREDENTIALS` secret is configured.
 
 ## Recommended Architecture for Flutter UI Library
 
