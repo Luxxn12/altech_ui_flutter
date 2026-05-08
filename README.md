@@ -1,6 +1,8 @@
 # altech_ui_flutter
 
-![ALTECH Logo](https://raw.githubusercontent.com/Luxxn12/altech_ui_flutter/main/assets/images/logo-altech.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Luxxn12/altech_ui_flutter/main/assets/images/logo-altech.png" alt="ALTECH Logo" width="320" />
+</p>
 
 `altech_ui_flutter` is a modern Flutter UI component library to help developers ship elegant screens faster with reusable, customizable, and developer-friendly components.
 
