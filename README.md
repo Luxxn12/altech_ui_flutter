@@ -20,7 +20,7 @@
 
 ```yaml
 dependencies:
-  altech_ui_flutter: ^0.1.0
+  altech_ui_flutter: ^1.1.3
 ```
 
 ## Quick Start
