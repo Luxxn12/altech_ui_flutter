@@ -1,5 +1,7 @@
 # altech_ui_flutter
 
+![ALTECH Logo](assets/images/logo-altech.png)
+
 `altech_ui_flutter` is a modern Flutter UI component library to help developers ship elegant screens faster with reusable, customizable, and developer-friendly components.
 
 ## Highlights
