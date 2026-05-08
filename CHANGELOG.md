@@ -1,5 +1,6 @@
-## 0.1.0
+## 1.1.3
 
+- Update README logo (center + resized).
 - Initial production-ready release of `altech_ui_flutter`.
 - Added centralized Material 3 theme system with design tokens.
 - Added reusable modern UI components:
