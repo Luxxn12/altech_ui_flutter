@@ -34,7 +34,7 @@ These screenshots show only part of the component set. For the full list, check 
 
 ```yaml
 dependencies:
-  altech_ui_flutter: ^2.0.0
+  altech_ui_flutter: ^2.0.1
 ```
 
 ## Quick Start
