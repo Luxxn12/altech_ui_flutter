@@ -11,43 +11,72 @@ abstract final class AltechBottomSheet {
     bool isDismissible = true,
     bool enableDrag = true,
     bool isScrollControlled = true,
+    bool showHandle = true,
+    double horizontalPadding = 16,
+    double verticalPadding = 16,
+    double? maxHeightFactor,
   }) {
     return showModalBottomSheet<T>(
       context: context,
       isDismissible: isDismissible,
       enableDrag: enableDrag,
       isScrollControlled: isScrollControlled,
+      showDragHandle: false,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AltechRadius.lg),
+          top: Radius.circular(AltechRadius.xl),
         ),
       ),
       builder: (_) {
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(AltechSpacing.md),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Container(
-                    width: 44,
-                    height: 5,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.outlineVariant,
-                      borderRadius: BorderRadius.circular(AltechRadius.pill),
-                    ),
+        final content = Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (showHandle)
+              Center(
+                child: Container(
+                  width: 48,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.outlineVariant,
+                    borderRadius: BorderRadius.circular(AltechRadius.pill),
                   ),
                 ),
-                if (title != null) ...[
-                  const SizedBox(height: AltechSpacing.md),
-                  Text(title, style: Theme.of(context).textTheme.titleMedium),
-                ],
-                const SizedBox(height: AltechSpacing.md),
-                child,
-              ],
+              ),
+            if (title != null) ...[
+              const SizedBox(height: AltechSpacing.md),
+              Text(
+                title,
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+              ),
+            ],
+            const SizedBox(height: AltechSpacing.md),
+            child,
+          ],
+        );
+
+        final wrapped = maxHeightFactor == null
+            ? content
+            : ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight:
+                      MediaQuery.sizeOf(context).height * maxHeightFactor,
+                ),
+                child: SingleChildScrollView(child: content),
+              );
+
+        return SafeArea(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+              horizontalPadding,
+              10,
+              horizontalPadding,
+              verticalPadding,
             ),
+            child: wrapped,
           ),
         );
       },

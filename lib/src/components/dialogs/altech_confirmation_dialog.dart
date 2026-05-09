@@ -11,6 +11,8 @@ abstract final class AltechConfirmationDialog {
     String cancelText = 'No',
     VoidCallback? onConfirm,
     VoidCallback? onCancel,
+    bool destructive = false,
+    bool showCloseButton = false,
   }) {
     return AltechDialog.show(
       context,
@@ -20,6 +22,11 @@ abstract final class AltechConfirmationDialog {
       cancelText: cancelText,
       onConfirm: onConfirm,
       onCancel: onCancel,
+      destructive: destructive,
+      icon: destructive
+          ? Icons.warning_amber_rounded
+          : Icons.help_outline_rounded,
+      showCloseButton: showCloseButton,
     );
   }
 }

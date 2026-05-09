@@ -1,4 +1,4 @@
-## 1.1.3
+## 2.0.0
 
 - Update README logo (center + resized).
 - Initial production-ready release of `altech_ui_flutter`.

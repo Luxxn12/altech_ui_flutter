@@ -7,7 +7,7 @@ class AltechShimmer extends StatefulWidget {
     super.key,
     this.width,
     this.height = 16,
-    this.radius = AltechRadius.xs,
+    this.radius = AltechRadius.sm,
     this.duration = const Duration(milliseconds: 1400),
   });
 
@@ -35,8 +35,12 @@ class _AltechShimmerState extends State<AltechShimmer>
 
   @override
   Widget build(BuildContext context) {
-    final base = Theme.of(context).colorScheme.surfaceContainerHighest;
-    final highlight = Theme.of(context).colorScheme.surfaceContainer;
+    final base = Theme.of(context).brightness == Brightness.dark
+        ? Theme.of(context).colorScheme.surfaceContainerHigh
+        : const Color(0xFFE8EDF5);
+    final highlight = Theme.of(context).brightness == Brightness.dark
+        ? Theme.of(context).colorScheme.surfaceContainerHighest
+        : const Color(0xFFF7FAFF);
 
     return AnimatedBuilder(
       animation: _controller,
@@ -47,9 +51,10 @@ class _AltechShimmerState extends State<AltechShimmer>
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.radius),
             gradient: LinearGradient(
-              begin: Alignment(-1 + (_controller.value * 2), -1),
-              end: Alignment(1 + (_controller.value * 2), 1),
+              begin: Alignment(-1.2 + (_controller.value * 2.4), 0),
+              end: Alignment(1.2 + (_controller.value * 2.4), 0),
               colors: [base, highlight, base],
+              stops: const [0.15, 0.5, 0.85],
             ),
           ),
         );

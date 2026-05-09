@@ -4,23 +4,37 @@
   <img src="https://raw.githubusercontent.com/Luxxn12/altech_ui_flutter/main/assets/images/logo-altech.png" alt="ALTECH Logo" width="320" />
 </p>
 
-`altech_ui_flutter` is a modern Flutter UI component library to help developers ship elegant screens faster with reusable, customizable, and developer-friendly components.
+<p align="center">
+  Modern, reusable, and customizable Flutter UI components with Material 3, design tokens, and centralized theming.
+</p>
+
+## Preview (Partial Components)
+
+These screenshots show only part of the component set. For the full list, check **Components** and run the `example` app.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Luxxn12/altech_ui_flutter/main/assets/images/showcase-cards-buttons.png" alt="Cards and Buttons Preview" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Luxxn12/altech_ui_flutter/main/assets/images/showcase-dialogs-sheets.png" alt="Dialogs and Sheets Preview" width="100%" />
+</p>
 
 ## Highlights
 
 - Material 3 first (`useMaterial3: true`)
 - Light and dark theme support
-- Centralized theme system
-- Design tokens for colors, typography, spacing, radius, and shadow
-- Reusable + customizable components
-- Simple API for common product flows
-- Ready for pub.dev publishing
+- Centralized theme system via `AltechTheme`
+- Token-driven design (`colors`, `typography`, `spacing`, `radius`, `shadow`)
+- Components optimized for white and dark backgrounds
+- Reusable + customizable API for production apps
+- Responsive helpers for dashboard-style layouts
 
 ## Installation
 
 ```yaml
 dependencies:
-  altech_ui_flutter: ^1.1.3
+  altech_ui_flutter: ^2.0.0
 ```
 
 ## Quick Start
@@ -35,6 +49,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: AltechTheme.light(),
       darkTheme: AltechTheme.dark(),
       themeMode: ThemeMode.system,
@@ -52,8 +67,6 @@ class MyApp extends StatelessWidget {
 - Radius: `AltechRadius`
 - Shadow: `AltechShadowTokens`
 
-Access theme extensions from context:
-
 ```dart
 final semantic = context.semanticColors;
 final shadows = context.shadows;
@@ -61,184 +74,245 @@ final shadows = context.shadows;
 
 ## Components
 
-### Alert
+### Alerts and Feedback
 
 ```dart
 AltechAlert.show(
   context,
   title: 'Success',
-  message: 'Data berhasil disimpan',
+  message: 'Data saved successfully',
+  type: AlertType.success,
+);
+
+const AltechFeedbackBanner(
+  title: 'Sync Complete',
+  message: 'Workspace synced successfully.',
   type: AlertType.success,
 );
 ```
 
-### Dialog
+### Dialogs and Sheets
 
 ```dart
 AltechDialog.show(
   context,
   title: 'Delete Item?',
-  message: 'Action ini tidak bisa dibatalkan.',
+  message: 'This action cannot be undone.',
   confirmText: 'Delete',
   cancelText: 'Cancel',
-  onConfirm: () {},
+  destructive: true,
 );
-```
 
-### Confirmation Dialog
-
-```dart
 AltechConfirmationDialog.show(
   context,
-  title: 'Keluar aplikasi?',
-  message: 'Progress yang belum disimpan akan hilang.',
+  title: 'Exit application?',
+  message: 'Unsaved progress will be lost.',
 );
-```
 
-### Bottom Sheet
-
-```dart
 AltechBottomSheet.show(
   context,
-  title: 'Filter',
-  child: const Text('Konten bottom sheet'),
+  title: 'Share Document',
+  child: const Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      AltechSheetActionItem(icon: Icons.link_rounded, label: 'Copy Link'),
+      AltechSheetActionItem(icon: Icons.mail_outline_rounded, label: 'Email'),
+      AltechSheetActionItem(icon: Icons.more_horiz_rounded, label: 'More'),
+    ],
+  ),
 );
 ```
 
-### Snackbar / Toast
-
-```dart
-AltechSnackbar.show(
-  context,
-  message: 'Profil berhasil diperbarui',
-  type: AlertType.success,
-);
-
-AltechToast.show(context, message: 'Saved');
-```
-
-### Loading Overlay
-
-```dart
-AltechLoadingOverlay(
-  isLoading: isSubmitting,
-  message: 'Memproses...',
-  child: YourPageContent(),
-)
-```
-
-Or global overlay:
-
-```dart
-AltechLoading.show(context, message: 'Please wait...');
-AltechLoading.hide();
-```
-
-### Button
+### Buttons
 
 ```dart
 AltechButton(
-  text: 'Login',
+  text: 'Primary Action',
   variant: ButtonVariant.primary,
   onPressed: () {},
 )
 ```
 
-### TextField
+Available variants:
+- `primary`
+- `secondary`
+- `tonal`
+- `outline`
+- `text`
+- `destructive`
+
+### Inputs and Forms
 
 ```dart
 AltechTextField(
-  hintText: 'Masukkan email',
-  prefixIcon: Icons.email,
+  hintText: 'Enter your email',
+  leadingIcon: Icons.email_outlined,
+  trailingIcon: Icons.check_circle_outline_rounded,
+);
+
+AltechDropdownField<String>(
+  hintText: 'Select role',
+  prefixIcon: Icons.workspaces_outline,
+  items: const [
+    DropdownMenuItem(value: 'admin', child: Text('Admin')),
+    DropdownMenuItem(value: 'user', child: Text('User')),
+  ],
+  onChanged: (value) {},
+);
+
+AltechCheckboxField(
+  value: true,
+  label: 'I agree to the terms and conditions',
+  onChanged: (value) {},
 )
 ```
 
-### Card
+### Navigation
 
 ```dart
-AltechCard(
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: const [
-      Text('Modern Card'),
-      Text('Reusable card component'),
-    ],
-  ),
+AltechTopSearchBar(
+  hintText: 'Search everywhere...',
+  onPrimaryAction: () {},
+);
+
+AltechSidebarNavigation(
+  title: 'Altech UI',
+  selectedIndex: 0,
+  onChanged: (index) {},
+  items: const [
+    AltechSidebarNavItem(label: 'Dashboard', icon: Icons.home_outlined),
+    AltechSidebarNavItem(label: 'Analytics', icon: Icons.insert_chart_outlined),
+  ],
+);
+
+AltechNavigationBar(
+  floating: true,
+  selectedIndex: 0,
+  onDestinationSelected: (index) {},
+  destinations: const [
+    AltechNavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
+    AltechNavigationDestination(icon: Icon(Icons.search_rounded), label: 'Search'),
+  ],
 )
 ```
 
-### Avatar / Badge / Chip
+### Cards
 
 ```dart
-const AltechAvatar(initials: 'A');
-const AltechBadge(label: 'PRO');
-const AltechChip(label: 'Design System');
+const AltechCard(
+  child: Text('Reusable card component'),
+);
+
+AltechMetricCard(
+  title: 'Current Balance',
+  value: '\$12,050.00',
+  subtitle: 'Available across all accounts',
+  variant: MetricCardVariant.dark,
+  primaryActionLabel: 'Transfer',
+  secondaryActionLabel: 'Details',
+  onPrimaryAction: () {},
+  onSecondaryAction: () {},
+)
 ```
 
-### Empty / Error State
+### States and Loaders
 
 ```dart
 const AltechEmptyState(
-  title: 'Belum ada data',
-  message: 'Mulai dengan menambahkan item baru.',
+  title: 'No Projects Found',
+  message: 'Create your first project to get started.',
 );
 
 AltechErrorState(
   title: 'Oops!',
-  message: 'Terjadi kesalahan saat memuat data.',
+  message: 'An error occurred while loading data.',
   onRetry: () {},
+);
+
+const AltechSkeleton(width: 220, height: 16);
+const AltechShimmer(width: 220, height: 16);
+
+AltechLoadingOverlay(
+  isLoading: isSubmitting,
+  message: 'Processing...',
+  child: YourPageContent(),
 )
 ```
 
-### Skeleton / Shimmer
+### Avatars, Badges, Chips
 
 ```dart
-const AltechSkeleton(width: 220, height: 16);
-const AltechShimmer(width: 220, height: 16);
+const AltechAvatar(initials: 'AL');
+const AltechAvatarGroup(initials: ['JS', 'MK', 'FR']);
+
+const AltechBadge(
+  label: 'In Progress',
+  variant: AltechBadgeVariant.info,
+);
+
+const AltechChip(
+  label: 'Active',
+  selected: true,
+);
 ```
 
-### Responsive Layout Helper
+### Snackbar and Toast
+
+```dart
+AltechSnackbar.show(
+  context,
+  title: 'Saved',
+  message: 'Changes saved successfully.',
+  type: AlertType.success,
+  actionLabel: 'Undo',
+  onActionPressed: () {},
+);
+
+AltechToast.show(context, message: 'Saved');
+```
+
+### Layout Helpers
 
 ```dart
 AltechResponsiveLayout(
   mobile: MobileWidget(),
   tablet: TabletWidget(),
   desktop: DesktopWidget(),
+);
+
+AltechSplitView(
+  left: LeftWidget(),
+  right: RightWidget(),
+);
+
+AltechDashboardShell(
+  sidebar: SidebarWidget(),
+  main: MainWidget(),
 )
 ```
 
-### AppBar / Navigation Bar
+## Full Exported API
 
-```dart
-const AltechAppBar(title: 'Dashboard');
+`altech_ui_flutter.dart` exports all public components and tokens, including:
+- Alerts: `AltechAlert`, `AltechFeedbackBanner`, `AlertType`
+- Dialogs: `AltechDialog`, `AltechConfirmationDialog`, `AltechModal`, `AltechStatusPopup`
+- Sheets: `AltechBottomSheet`, `AltechSheetActionItem`
+- Inputs/Forms: `AltechTextField`, `AltechDropdownField`, `AltechCheckboxField`
+- Navigation: `AltechAppBar`, `AltechTopSearchBar`, `AltechSidebarNavigation`, `AltechNavigationBar`
+- Cards: `AltechCard`, `AltechMetricCard`
+- States/Loaders: `AltechEmptyState`, `AltechErrorState`, `AltechLoadingOverlay`, `AltechSkeleton`, `AltechShimmer`
+- Feedback: `AltechSnackbar`, `AltechToast`
+- Avatar/Badge/Chip: `AltechAvatar`, `AltechAvatarGroup`, `AltechBadge`, `AltechChip`
+- Layout: `AltechResponsiveLayout`, `AltechSplitView`, `AltechDashboardShell`
+- Theme and tokens: `AltechTheme`, `AltechColorTokens`, `AltechSemanticColors`, `AltechTypography`, `AltechSpacing`, `AltechRadius`, `AltechShadowTokens`
 
-AltechNavigationBar(
-  selectedIndex: index,
-  onDestinationSelected: (value) => setState(() => index = value),
-  destinations: const [
-    AltechNavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-    AltechNavigationDestination(icon: Icon(Icons.person_outline), label: 'Profile'),
-  ],
-)
-```
+## Example App
 
-### Reusable Form Components
+Run locally:
 
-```dart
-AltechDropdownField<String>(
-  hintText: 'Pilih role',
-  items: const [
-    DropdownMenuItem(value: 'admin', child: Text('Admin')),
-    DropdownMenuItem(value: 'user', child: Text('User')),
-  ],
-  onChanged: (value) {},
-)
-
-AltechCheckboxField(
-  value: accepted,
-  label: 'Saya setuju syarat & ketentuan',
-  onChanged: (value) {},
-)
+```bash
+cd example
+flutter run -d chrome
 ```
 
 ## Project Structure
@@ -249,20 +323,20 @@ lib/
  └── src/
       ├── components/
       │    ├── alerts/
-      │    ├── dialogs/
-      │    ├── buttons/
-      │    ├── inputs/
-      │    ├── cards/
-      │    ├── snackbars/
-      │    ├── loaders/
-      │    ├── sheets/
       │    ├── avatars/
       │    ├── badges/
+      │    ├── buttons/
+      │    ├── cards/
       │    ├── chips/
-      │    ├── states/
-      │    ├── navigation/
+      │    ├── dialogs/
+      │    ├── forms/
+      │    ├── inputs/
       │    ├── layout/
-      │    └── forms/
+      │    ├── loaders/
+      │    ├── navigation/
+      │    ├── sheets/
+      │    ├── snackbars/
+      │    └── states/
       ├── theme/
       │    ├── colors/
       │    ├── typography/
@@ -272,18 +346,20 @@ lib/
       └── extensions/
 ```
 
+## Publishing Notes
 
-## Recommended Architecture for Flutter UI Library
+Before publishing a new version:
 
-- Token-driven design system (single source of truth)
-- Centralized theme + theme extensions for semantic values
-- Thin and composable widgets
-- Stateless by default; stateful only where animation/interaction is required
-- Public API through one barrel file (`altech_ui_flutter.dart`)
-- Versioning discipline (SemVer) and changelog-driven release process
+```bash
+flutter analyze
+flutter test
+flutter pub publish --dry-run
+```
 
-## References
+Then update:
+- `version` in `pubspec.yaml`
+- `CHANGELOG.md` with the same version
 
-- Flutter SDK archive and release schedule: https://docs.flutter.dev/install/archive
-- Material 3 in Flutter (`useMaterial3`): https://api.flutter.dev/flutter/material/ThemeData/useMaterial3.html
-- pub.dev automated publishing from GitHub Actions: https://dart.dev/tools/pub/automated-publishing
+## License
+
+MIT License.

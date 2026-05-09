@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../theme/spacing/altech_radius.dart';
+import '../../theme/spacing/altech_spacing.dart';
+
 class AltechCheckboxField extends StatelessWidget {
   const AltechCheckboxField({
     super.key,
@@ -7,22 +10,50 @@ class AltechCheckboxField extends StatelessWidget {
     required this.onChanged,
     required this.label,
     this.subtitle,
+    this.compact = false,
   });
 
   final bool value;
   final ValueChanged<bool?> onChanged;
   final String label;
   final String? subtitle;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
-    return CheckboxListTile(
-      value: value,
-      onChanged: onChanged,
-      title: Text(label),
-      subtitle: subtitle == null ? null : Text(subtitle!),
-      controlAffinity: ListTileControlAffinity.leading,
-      contentPadding: EdgeInsets.zero,
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Container(
+      padding: compact
+          ? const EdgeInsets.symmetric(horizontal: 2)
+          : const EdgeInsets.symmetric(horizontal: 4),
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        border: Border.all(
+          color: colorScheme.outlineVariant.withValues(alpha: 0.7),
+        ),
+        borderRadius: BorderRadius.circular(AltechRadius.sm),
+      ),
+      child: CheckboxListTile(
+        value: value,
+        onChanged: onChanged,
+        title: Text(
+          label,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+        ),
+        subtitle: subtitle == null ? null : Text(subtitle!),
+        controlAffinity: ListTileControlAffinity.leading,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: AltechSpacing.xs,
+        ),
+        dense: compact,
+        visualDensity: compact ? VisualDensity.compact : VisualDensity.standard,
+        activeColor: colorScheme.primary,
+        checkColor: colorScheme.onPrimary,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+      ),
     );
   }
 }

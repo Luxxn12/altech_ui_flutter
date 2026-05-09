@@ -7,7 +7,7 @@ class AltechSkeleton extends StatelessWidget {
     super.key,
     this.width,
     this.height = 16,
-    this.radius = AltechRadius.xs,
+    this.radius = AltechRadius.sm,
   });
 
   final double? width;
@@ -16,11 +16,15 @@ class AltechSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).brightness == Brightness.dark
+        ? Theme.of(context).colorScheme.surfaceContainerHigh
+        : const Color(0xFFE8EDF5);
+
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        color: color,
         borderRadius: BorderRadius.circular(radius),
       ),
     );

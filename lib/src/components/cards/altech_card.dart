@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../extensions/build_context_x.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
@@ -9,8 +10,11 @@ class AltechCard extends StatelessWidget {
     required this.child,
     this.padding = const EdgeInsets.all(AltechSpacing.md),
     this.onTap,
-    this.radius = AltechRadius.md,
+    this.radius = AltechRadius.lg,
     this.elevation = 0,
+    this.backgroundColor,
+    this.borderColor,
+    this.shadow,
   });
 
   final Widget child;
@@ -18,25 +22,37 @@ class AltechCard extends StatelessWidget {
   final VoidCallback? onTap;
   final double radius;
   final double elevation;
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final List<BoxShadow>? shadow;
 
   @override
   Widget build(BuildContext context) {
-    final card = Card(
-      elevation: elevation,
-      shape: RoundedRectangleBorder(
+    final colorScheme = context.colors;
+
+    return Container(
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
+        boxShadow: shadow ?? context.shadows.sm,
       ),
-      child: Padding(padding: padding, child: child),
-    );
-
-    if (onTap == null) {
-      return card;
-    }
-
-    return InkWell(
-      borderRadius: BorderRadius.circular(radius),
-      onTap: onTap,
-      child: card,
+      child: Material(
+        color: backgroundColor ?? colorScheme.surface,
+        elevation: elevation,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radius),
+          side: BorderSide(
+            color:
+                borderColor ??
+                colorScheme.outlineVariant.withValues(alpha: 0.8),
+          ),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(radius),
+          onTap: onTap,
+          child: Padding(padding: padding, child: child),
+        ),
+      ),
     );
   }
 }

@@ -10,6 +10,8 @@ abstract final class AltechModal {
     String? title,
     bool useSafeArea = true,
     bool barrierDismissible = true,
+    bool showClose = true,
+    double maxWidth = 560,
   }) {
     return showDialog<T>(
       context: context,
@@ -17,29 +19,48 @@ abstract final class AltechModal {
       builder: (_) {
         final content = Dialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AltechRadius.lg),
+            borderRadius: BorderRadius.circular(AltechRadius.xl),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(AltechSpacing.md),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (title != null) ...[
-                  Text(title, style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: AltechSpacing.sm),
+          insetPadding: const EdgeInsets.all(AltechSpacing.lg),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: maxWidth),
+            child: Padding(
+              padding: const EdgeInsets.all(AltechSpacing.md),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (title != null || showClose)
+                    Row(
+                      children: [
+                        if (title != null)
+                          Expanded(
+                            child: Text(
+                              title,
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(fontWeight: FontWeight.w700),
+                            ),
+                          )
+                        else
+                          const Spacer(),
+                        if (showClose)
+                          IconButton(
+                            visualDensity: VisualDensity.compact,
+                            onPressed: () => Navigator.of(context).pop(),
+                            icon: const Icon(Icons.close_rounded),
+                          ),
+                      ],
+                    ),
+                  if (title != null || showClose)
+                    const SizedBox(height: AltechSpacing.xs),
+                  child,
                 ],
-                child,
-              ],
+              ),
             ),
           ),
         );
 
-        if (!useSafeArea) {
-          return content;
-        }
-
-        return SafeArea(child: content);
+        return useSafeArea ? SafeArea(child: content) : content;
       },
     );
   }

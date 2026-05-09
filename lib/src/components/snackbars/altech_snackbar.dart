@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../../extensions/build_context_x.dart';
+import '../../theme/spacing/altech_radius.dart';
 import '../alerts/alert_type.dart';
 
 abstract final class AltechSnackbar {
   static void show(
     BuildContext context, {
     required String message,
+    String? title,
     AlertType type = AlertType.info,
     Duration duration = const Duration(seconds: 3),
     SnackBarAction? action,
+    String? actionLabel,
+    VoidCallback? onActionPressed,
   }) {
     final style = _styleOf(context, type);
 
@@ -18,22 +22,55 @@ abstract final class AltechSnackbar {
       ..showSnackBar(
         SnackBar(
           duration: duration,
-          backgroundColor: style.background,
+          backgroundColor: const Color(0xFF141821),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AltechRadius.md),
+          ),
           content: Row(
             children: [
-              Icon(style.icon, color: style.foreground),
-              const SizedBox(width: 12),
+              Container(
+                width: 28,
+                height: 28,
+                decoration: BoxDecoration(
+                  color: style.foreground.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(9),
+                ),
+                child: Icon(style.icon, color: style.foreground, size: 17),
+              ),
+              const SizedBox(width: 10),
               Expanded(
-                child: Text(
-                  message,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyMedium?.copyWith(color: style.foreground),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (title != null)
+                      Text(
+                        title,
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    Text(
+                      message,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-          action: action,
+          action:
+              action ??
+              (actionLabel != null
+                  ? SnackBarAction(
+                      label: actionLabel,
+                      textColor: Colors.white,
+                      onPressed: onActionPressed ?? () {},
+                    )
+                  : null),
         ),
       );
   }
@@ -44,40 +81,28 @@ abstract final class AltechSnackbar {
     switch (type) {
       case AlertType.success:
         return _SnackStyle(
-          background: semantic.success,
-          foreground: semantic.onSuccess,
-          icon: Icons.check_circle,
+          foreground: semantic.success,
+          icon: Icons.check_rounded,
         );
       case AlertType.error:
         return _SnackStyle(
-          background: semantic.error,
-          foreground: semantic.onError,
-          icon: Icons.error,
+          foreground: semantic.error,
+          icon: Icons.close_rounded,
         );
       case AlertType.warning:
         return _SnackStyle(
-          background: semantic.warning,
-          foreground: semantic.onWarning,
-          icon: Icons.warning,
+          foreground: semantic.warning,
+          icon: Icons.warning_rounded,
         );
       case AlertType.info:
-        return _SnackStyle(
-          background: semantic.info,
-          foreground: semantic.onInfo,
-          icon: Icons.info,
-        );
+        return _SnackStyle(foreground: semantic.info, icon: Icons.info_rounded);
     }
   }
 }
 
 class _SnackStyle {
-  const _SnackStyle({
-    required this.background,
-    required this.foreground,
-    required this.icon,
-  });
+  const _SnackStyle({required this.foreground, required this.icon});
 
-  final Color background;
   final Color foreground;
   final IconData icon;
 }

@@ -11,46 +11,46 @@ class AltechShadowTokens extends ThemeExtension<AltechShadowTokens> {
   const AltechShadowTokens.light()
     : sm = const [
         BoxShadow(
-          color: Color(0x140F172A),
-          blurRadius: 8,
-          offset: Offset(0, 2),
+          color: Color(0x120E1A38),
+          blurRadius: 12,
+          offset: Offset(0, 4),
         ),
       ],
       md = const [
         BoxShadow(
-          color: Color(0x1A0F172A),
-          blurRadius: 18,
-          offset: Offset(0, 8),
+          color: Color(0x140E1A38),
+          blurRadius: 24,
+          offset: Offset(0, 12),
         ),
       ],
       lg = const [
         BoxShadow(
-          color: Color(0x220F172A),
-          blurRadius: 28,
-          offset: Offset(0, 14),
+          color: Color(0x1A0E1A38),
+          blurRadius: 36,
+          offset: Offset(0, 18),
         ),
       ];
 
   const AltechShadowTokens.dark()
     : sm = const [
         BoxShadow(
-          color: Color(0x4D000000),
-          blurRadius: 8,
-          offset: Offset(0, 2),
+          color: Color(0x55000000),
+          blurRadius: 12,
+          offset: Offset(0, 4),
         ),
       ],
       md = const [
         BoxShadow(
-          color: Color(0x59000000),
-          blurRadius: 18,
-          offset: Offset(0, 8),
+          color: Color(0x66000000),
+          blurRadius: 24,
+          offset: Offset(0, 12),
         ),
       ],
       lg = const [
         BoxShadow(
-          color: Color(0x73000000),
-          blurRadius: 28,
-          offset: Offset(0, 14),
+          color: Color(0x80000000),
+          blurRadius: 36,
+          offset: Offset(0, 18),
         ),
       ];
 
