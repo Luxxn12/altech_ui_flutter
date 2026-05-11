@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_spacing.dart';
 import 'altech_avatar.dart';
 
+/// Overlapped avatar group with an automatic `+N` indicator.
 class AltechAvatarGroup extends StatelessWidget {
+  /// Creates an avatar group.
   const AltechAvatarGroup({
     super.key,
     required this.initials,

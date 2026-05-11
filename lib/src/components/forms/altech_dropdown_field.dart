@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Form-ready dropdown field that follows package input styling.
 class AltechDropdownField<T> extends StatelessWidget {
+  /// Creates a dropdown form field.
   const AltechDropdownField({
     super.key,
     required this.items,

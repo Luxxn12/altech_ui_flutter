@@ -4,7 +4,9 @@ import '../../extensions/build_context_x.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../alerts/alert_type.dart';
 
+/// Snackbar helper with semantic styling and optional action button.
 abstract final class AltechSnackbar {
+  /// Shows a floating snackbar.
   static void show(
     BuildContext context, {
     required String message,

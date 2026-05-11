@@ -4,7 +4,9 @@ import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 import '../avatars/altech_avatar.dart';
 
+/// Sidebar item model used by [AltechSidebarNavigation].
 class AltechSidebarNavItem {
+  /// Creates a sidebar item definition.
   const AltechSidebarNavItem({
     required this.label,
     required this.icon,
@@ -16,7 +18,9 @@ class AltechSidebarNavItem {
   final String? badge;
 }
 
+/// Vertical sidebar navigation for dashboard layouts.
 class AltechSidebarNavigation extends StatelessWidget {
+  /// Creates a sidebar navigation component.
   const AltechSidebarNavigation({
     super.key,
     required this.items,

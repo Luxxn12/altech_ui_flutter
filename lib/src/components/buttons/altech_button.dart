@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Button style variants used by [AltechButton].
 enum ButtonVariant { primary, secondary, tonal, outline, text, destructive }
 
+/// Reusable Material 3 button with multiple visual variants.
 class AltechButton extends StatelessWidget {
+  /// Creates an Altech button.
   const AltechButton({
     super.key,
     required this.text,

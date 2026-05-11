@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Reusable text input component with optional leading/trailing elements.
 class AltechTextField extends StatelessWidget {
+  /// Creates a text field with package theming defaults.
   const AltechTextField({
     super.key,
     this.controller,

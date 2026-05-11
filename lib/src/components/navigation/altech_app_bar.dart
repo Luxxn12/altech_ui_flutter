@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Reusable app bar with optional subtitle and bottom border.
 class AltechAppBar extends StatelessWidget implements PreferredSizeWidget {
+  /// Creates an app bar component.
   const AltechAppBar({
     super.key,
     required this.title,

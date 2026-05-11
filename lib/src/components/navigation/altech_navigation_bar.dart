@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Navigation destination model for [AltechNavigationBar].
 class AltechNavigationDestination {
+  /// Creates a navigation destination.
   const AltechNavigationDestination({
     required this.icon,
     required this.label,
@@ -17,7 +19,9 @@ class AltechNavigationDestination {
   final bool showBadgeDot;
 }
 
+/// Bottom navigation component with optional floating dock mode.
 class AltechNavigationBar extends StatelessWidget {
+  /// Creates a navigation bar.
   const AltechNavigationBar({
     super.key,
     required this.destinations,

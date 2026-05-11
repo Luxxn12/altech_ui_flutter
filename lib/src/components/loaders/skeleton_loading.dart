@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../theme/spacing/altech_radius.dart';
 
+/// Simple skeleton placeholder block.
 class AltechSkeleton extends StatelessWidget {
+  /// Creates a static skeleton block.
   const AltechSkeleton({
     super.key,
     this.width,

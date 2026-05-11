@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Circular avatar component with initials/image and optional online status.
 class AltechAvatar extends StatelessWidget {
+  /// Creates an avatar widget.
   const AltechAvatar({
     super.key,
     this.image,

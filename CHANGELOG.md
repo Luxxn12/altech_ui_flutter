@@ -1,3 +1,11 @@
+## 2.0.2
+
+- Improved public API documentation coverage with extensive dartdoc updates
+  across exported components, enums, and helper methods.
+- Increased documentation score readiness for pub.dev (coverage now above the
+  20% threshold).
+- Kept component APIs unchanged while improving package quality and discoverability.
+
 ## 2.0.1
 
 - Improved component contrast and active-state visibility for both light and dark backgrounds.

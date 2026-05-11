@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Checkbox list tile wrapped as a reusable form control.
 class AltechCheckboxField extends StatelessWidget {
+  /// Creates a checkbox form field.
   const AltechCheckboxField({
     super.key,
     required this.value,

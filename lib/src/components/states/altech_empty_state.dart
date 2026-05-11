@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Empty-state placeholder with optional action widget.
 class AltechEmptyState extends StatelessWidget {
+  /// Creates an empty-state panel.
   const AltechEmptyState({
     super.key,
     required this.title,

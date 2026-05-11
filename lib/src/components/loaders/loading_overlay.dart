@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Widget wrapper that shows a loading layer above [child].
 class AltechLoadingOverlay extends StatelessWidget {
+  /// Creates a loading overlay wrapper.
   const AltechLoadingOverlay({
     super.key,
     required this.isLoading,
@@ -47,9 +49,11 @@ class AltechLoadingOverlay extends StatelessWidget {
   }
 }
 
+/// Global imperative loading overlay helper.
 abstract final class AltechLoading {
   static OverlayEntry? _entry;
 
+  /// Shows a fullscreen loading overlay.
   static void show(BuildContext context, {String? message}) {
     hide();
     final overlay = Overlay.of(context, rootOverlay: true);
@@ -63,6 +67,7 @@ abstract final class AltechLoading {
     overlay.insert(_entry!);
   }
 
+  /// Hides the global loading overlay if visible.
   static void hide() {
     _entry?.remove();
     _entry = null;

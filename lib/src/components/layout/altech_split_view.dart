@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Two-column responsive split layout that stacks on narrow screens.
 class AltechSplitView extends StatelessWidget {
+  /// Creates a split view layout.
   const AltechSplitView({
     super.key,
     required this.left,

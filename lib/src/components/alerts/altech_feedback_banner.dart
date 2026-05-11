@@ -5,7 +5,9 @@ import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 import 'alert_type.dart';
 
+/// Inline feedback banner for non-blocking status updates.
 class AltechFeedbackBanner extends StatelessWidget {
+  /// Creates a feedback banner.
   const AltechFeedbackBanner({
     super.key,
     required this.title,

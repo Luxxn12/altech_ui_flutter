@@ -4,7 +4,9 @@ import '../../extensions/build_context_x.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Generic surface card with optional tap handler and custom shadow.
 class AltechCard extends StatelessWidget {
+  /// Creates a card wrapper.
   const AltechCard({
     super.key,
     required this.child,

@@ -34,7 +34,7 @@ These screenshots show only part of the component set. For the full list, check 
 
 ```yaml
 dependencies:
-  altech_ui_flutter: ^2.0.1
+  altech_ui_flutter: ^2.0.2
 ```
 
 ## Quick Start
@@ -305,60 +305,6 @@ AltechDashboardShell(
 - Avatar/Badge/Chip: `AltechAvatar`, `AltechAvatarGroup`, `AltechBadge`, `AltechChip`
 - Layout: `AltechResponsiveLayout`, `AltechSplitView`, `AltechDashboardShell`
 - Theme and tokens: `AltechTheme`, `AltechColorTokens`, `AltechSemanticColors`, `AltechTypography`, `AltechSpacing`, `AltechRadius`, `AltechShadowTokens`
-
-## Example App
-
-Run locally:
-
-```bash
-cd example
-flutter run -d chrome
-```
-
-## Project Structure
-
-```txt
-lib/
- ├── altech_ui_flutter.dart
- └── src/
-      ├── components/
-      │    ├── alerts/
-      │    ├── avatars/
-      │    ├── badges/
-      │    ├── buttons/
-      │    ├── cards/
-      │    ├── chips/
-      │    ├── dialogs/
-      │    ├── forms/
-      │    ├── inputs/
-      │    ├── layout/
-      │    ├── loaders/
-      │    ├── navigation/
-      │    ├── sheets/
-      │    ├── snackbars/
-      │    └── states/
-      ├── theme/
-      │    ├── colors/
-      │    ├── typography/
-      │    ├── spacing/
-      │    └── themes/
-      ├── utils/
-      └── extensions/
-```
-
-## Publishing Notes
-
-Before publishing a new version:
-
-```bash
-flutter analyze
-flutter test
-flutter pub publish --dry-run
-```
-
-Then update:
-- `version` in `pubspec.yaml`
-- `CHANGELOG.md` with the same version
 
 ## License
 

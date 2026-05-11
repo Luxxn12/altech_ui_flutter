@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Circular icon action item for sheet action menus.
 class AltechSheetActionItem extends StatelessWidget {
+  /// Creates a sheet action item.
   const AltechSheetActionItem({
     super.key,
     required this.icon,

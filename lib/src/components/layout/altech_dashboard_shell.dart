@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Scrollable dashboard shell with responsive sidebar/main arrangement.
 class AltechDashboardShell extends StatelessWidget {
+  /// Creates a dashboard shell layout.
   const AltechDashboardShell({
     super.key,
     required this.sidebar,

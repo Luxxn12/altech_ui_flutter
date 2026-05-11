@@ -6,7 +6,9 @@ import '../../theme/spacing/altech_spacing.dart';
 import '../buttons/altech_button.dart';
 import 'alert_type.dart';
 
+/// Dialog-based alert helper for success, info, warning, and error messages.
 abstract final class AltechAlert {
+  /// Shows a modern alert dialog.
   static Future<void> show(
     BuildContext context, {
     required String title,

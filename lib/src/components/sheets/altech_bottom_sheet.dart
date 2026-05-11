@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Helper for showing Material 3 styled bottom sheets.
 abstract final class AltechBottomSheet {
+  /// Shows a modal bottom sheet.
   static Future<T?> show<T>(
     BuildContext context, {
     required Widget child,

@@ -4,7 +4,9 @@ import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 import '../buttons/altech_button.dart';
 
+/// Helper for showing confirmation-style dialogs with customizable actions.
 abstract final class AltechDialog {
+  /// Shows a modern dialog and returns `true` when confirmed.
   static Future<bool?> show(
     BuildContext context, {
     required String title,

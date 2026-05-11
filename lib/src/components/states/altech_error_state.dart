@@ -4,7 +4,9 @@ import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 import '../buttons/altech_button.dart';
 
+/// Error-state panel with optional retry action.
 class AltechErrorState extends StatelessWidget {
+  /// Creates an error-state panel.
   const AltechErrorState({
     super.key,
     required this.title,

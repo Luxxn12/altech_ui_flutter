@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Selectable chip component for filtering and tagging.
 class AltechChip extends StatelessWidget {
+  /// Creates a chip widget.
   const AltechChip({
     super.key,
     required this.label,

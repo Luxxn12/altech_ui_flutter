@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'altech_dialog.dart';
 
+/// Convenience wrapper around [AltechDialog] for yes/no confirmations.
 abstract final class AltechConfirmationDialog {
+  /// Shows a confirmation dialog.
   static Future<bool?> show(
     BuildContext context, {
     required String title,

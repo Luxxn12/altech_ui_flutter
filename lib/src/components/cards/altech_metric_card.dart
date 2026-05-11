@@ -4,9 +4,12 @@ import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 import '../buttons/altech_button.dart';
 
+/// Visual tone for [AltechMetricCard].
 enum MetricCardVariant { light, dark }
 
+/// KPI/metric card with optional actions and trend indicator.
 class AltechMetricCard extends StatelessWidget {
+  /// Creates a metric card.
   const AltechMetricCard({
     super.key,
     required this.title,

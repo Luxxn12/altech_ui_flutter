@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../alerts/alert_type.dart';
 import '../alerts/altech_alert.dart';
 
+/// Preconfigured status popups built on top of [AltechAlert].
 abstract final class AltechStatusPopup {
+  /// Shows a success popup.
   static Future<void> success(
     BuildContext context, {
     String title = 'Success',
@@ -19,6 +21,7 @@ abstract final class AltechStatusPopup {
     );
   }
 
+  /// Shows an error popup.
   static Future<void> error(
     BuildContext context, {
     String title = 'Something went wrong',
@@ -34,6 +37,7 @@ abstract final class AltechStatusPopup {
     );
   }
 
+  /// Shows a warning popup.
   static Future<void> warning(
     BuildContext context, {
     String title = 'Please review',

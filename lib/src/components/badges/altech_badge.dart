@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Visual variants for [AltechBadge].
 enum AltechBadgeVariant { neutral, info, success, warning, danger }
 
+/// Compact badge for labels, states, and counters.
 class AltechBadge extends StatelessWidget {
+  /// Creates a badge widget.
   const AltechBadge({
     super.key,
     required this.label,

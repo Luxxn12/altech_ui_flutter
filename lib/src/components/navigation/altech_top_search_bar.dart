@@ -5,7 +5,9 @@ import '../../theme/spacing/altech_spacing.dart';
 import '../buttons/altech_button.dart';
 import '../inputs/altech_text_field.dart';
 
+/// Top search/action bar commonly used in dashboard headers.
 class AltechTopSearchBar extends StatelessWidget {
+  /// Creates a top search bar.
   const AltechTopSearchBar({
     super.key,
     this.hintText = 'Search everywhere...',

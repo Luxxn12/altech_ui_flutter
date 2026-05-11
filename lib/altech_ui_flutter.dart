@@ -1,3 +1,11 @@
+// ignore_for_file: unnecessary_library_name
+
+/// Altech UI Flutter public API exports.
+///
+/// Import this file to access all reusable components, themes, and design
+/// tokens from the package.
+library altech_ui_flutter;
+
 export 'src/components/alerts/alert_type.dart';
 export 'src/components/alerts/altech_alert.dart';
 export 'src/components/alerts/altech_feedback_banner.dart';

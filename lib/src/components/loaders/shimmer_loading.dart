@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../theme/spacing/altech_radius.dart';
 
+/// Animated shimmer placeholder block.
 class AltechShimmer extends StatefulWidget {
+  /// Creates a shimmer placeholder.
   const AltechShimmer({
     super.key,
     this.width,

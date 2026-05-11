@@ -6,9 +6,11 @@ import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 import '../alerts/alert_type.dart';
 
+/// Lightweight toast helper rendered using an [OverlayEntry].
 abstract final class AltechToast {
   static OverlayEntry? _entry;
 
+  /// Shows a toast message.
   static void show(
     BuildContext context, {
     required String message,
@@ -82,6 +84,7 @@ abstract final class AltechToast {
     unawaited(Future<void>.delayed(duration, hide));
   }
 
+  /// Hides the currently visible toast.
   static void hide() {
     _entry?.remove();
     _entry = null;

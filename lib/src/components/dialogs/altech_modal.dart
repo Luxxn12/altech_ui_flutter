@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../theme/spacing/altech_radius.dart';
 import '../../theme/spacing/altech_spacing.dart';
 
+/// Generic modal dialog helper with optional title and close button.
 abstract final class AltechModal {
+  /// Shows a custom modal dialog.
   static Future<T?> show<T>(
     BuildContext context, {
     required Widget child,
